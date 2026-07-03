@@ -57,7 +57,11 @@ Measured on the same harness ponytail uses (vendored from their repo, MIT — sa
   <img src="assets/benchmark-single-shot.svg" width="860" alt="Median lines of code per answer across baseline, caveman, ponytail, and scalpel, on Haiku 4.5, Sonnet 4.6, and Opus 4.8. Scalpel is lowest on every model.">
 </p>
 
-Scalpel vs ponytail, medians:
+Scalpel vs ponytail, head-to-head:
+
+<p align="center">
+  <img src="assets/benchmark-vs-ponytail.svg" width="780" alt="Scalpel's LOC, tokens, and cost as a percent of ponytail's median, per model. Every bar sits below ponytail's 100% reference line.">
+</p>
 
 | model | LOC | tokens | cost | latency | correctness |
 |---|--:|--:|--:|--:|--:|
