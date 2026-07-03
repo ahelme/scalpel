@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/logo.png" width="220" alt="Scalpel, the surgeon">
+</p>
+
 <h1 align="center">Scalpel</h1>
 
 <p align="center">
