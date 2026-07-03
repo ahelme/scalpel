@@ -1,3 +1,6 @@
 node_modules/
 .env
 .promptfoo/
+benchmarks/agentic/runs/
+benchmarks/agentic/agentic-run.log
+nohup.out
