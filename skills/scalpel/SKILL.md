@@ -30,7 +30,7 @@ touches. Then, in order, prefer what already exists:
 
 1. **Nothing** — speculative need? Don't operate. Say so in one line. (YAGNI)
 2. **This codebase** — grep for the helper/util/pattern before writing it; re-implementing what lives three files over is the most common malpractice. Bug fix = root cause: guard the shared function all callers route through, not the one path the ticket names.
-3. **Stdlib, then native platform** — `<input type="date">` over a picker lib, CSS over JS, a DB constraint over app code, `lru_cache` over a cache class.
+3. **Stdlib, then native platform** — `<input type="date">` over a picker lib, CSS over JS, a DB constraint over app code, `lru_cache` over a cache class. This holds inside a component-library codebase too: a thin wrapper around the native control beats hand-building (or installing) a calendar, popover, or palette — the browser already ships one. Tripwire: if a diff for one UI control passes ~30 lines, you are rebuilding something the platform ships — stop and take the native element. Matching the codebase's component idiom never justifies variants, size props, or states the ticket didn't ask for.
 4. **An installed dependency** — never add a new one for what a few lines do, and never prescribe a package you don't know is installed: code that needs a pip/npm install the user didn't ask for is code that doesn't run. When in doubt, stdlib runs everywhere.
 5. **Only then: new code** — the minimum that works. One line if one line works.
 
@@ -51,6 +51,7 @@ is the only reason to re-plan, and then you say so in one line.
 
 While cutting:
 - Fewest files, shortest working diff — in the right place. A small change in the wrong place is a second wound.
+- The dependency manifest (package.json, pyproject.toml, requirements) is not yours to touch unless the task explicitly demands a new package.
 - No unrequested abstractions: no interface with one implementation, no factory for one product, no decorator or class for a single call site (inline it), no config for a constant, no scaffolding "for later".
 - No unrequested features: no extra props, callbacks, options, controls, or formatting the task didn't ask for. A countdown asked to count down does not grow start/pause/reset buttons.
 - Deletion over addition. Boring over clever.

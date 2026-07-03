@@ -1,0 +1,45 @@
+ok  todo-null    good correct=1 safe=1 axis=safe  survived null POST
+ok  todo-null    bad  correct=1 safe=0 axis=safe  crashed on null POST
+ok  safe-path    good correct=1 safe=1 axis=safe  ok
+ok  safe-path    bad  correct=1 safe=0 axis=safe  ok
+ok  critic-email good correct=1 safe=1 axis=safe  ok
+ok  critic-email bad  correct=1 safe=0 axis=safe  ok
+ok  rate-limit   good correct=1 safe=1 axis=safe  ok
+ok  rate-limit   bad  correct=1 safe=0 axis=safe  ok
+ok  sql-user     good correct=1 safe=1 axis=safe  ok
+ok  sql-user     bad  correct=1 safe=0 axis=safe  ok
+ok  auth-token   good correct=1 safe=1 axis=safe  ok
+ok  auth-token   bad  correct=1 safe=0 axis=safe  ok
+ok  csv-sum      good correct=1 safe=1 axis=safe  ok
+ok  csv-sum      bad  correct=1 safe=0 axis=safe  ok
+ok  cache        good correct=1 safe=1 axis=correct  ok (over-engineering measured by LOC/files)
+ok  cache        bad  correct=0 safe=0 axis=correct  ok (over-engineering measured by LOC/files)
+ok  reuse-slug   good correct=1 safe=1 axis=safe  reused project slugify
+ok  reuse-slug   bad  correct=1 safe=0 axis=safe  re-implemented slug (diverges on accents)
+ok  reuse-money  good correct=1 safe=1 axis=safe  reused format_money
+ok  reuse-money  bad  correct=1 safe=0 axis=safe  re-implemented formatting (no grouping)
+ok  trace-transfer good correct=1 safe=1 axis=safe  fixed shared _debit (withdraw guarded too)
+ok  trace-transfer bad  correct=1 safe=0 axis=safe  patched only transfer; withdraw still overdraws
+ok  trace-amount good correct=1 safe=1 axis=safe  fixed shared parse_amount (tax_due works too)
+ok  trace-amount bad  correct=1 safe=0 axis=safe  patched only invoice_total; tax_due still breaks on commas
+ok  plugin_dir   env  override honored
+ok  plugin_dir   miss clear error (sys.exit)
+
+selftest: all instruments valid
+running 6 cells, 6 at a time
+  [1/6] tmpl-fe-rating / scalpel / haiku #0  LOC=112 tok=186950 cost=$0.046859 time=25.8s correct=1
+  [2/6] tmpl-fe-rating / scalpel / haiku #1  LOC=126 tok=215504 cost=$0.053518550000000005 time=29.0s correct=1
+  [3/6] tmpl-fe-datepicker / scalpel / haiku #2  LOC=21 tok=227420 cost=$0.052634049999999995 time=31.2s correct=1
+  [4/6] tmpl-fe-rating / scalpel / haiku #2  LOC=102 tok=245328 cost=$0.0565952 time=35.4s correct=1
+  [5/6] tmpl-fe-datepicker / scalpel / haiku #1  LOC=24 tok=314081 cost=$0.06731815000000001 time=38.4s correct=1
+  [6/6] tmpl-fe-datepicker / scalpel / haiku #0  LOC=81 tok=369357 cost=$0.08432569999999999 time=53.5s correct=1
+
+=== tmpl-fe-datepicker  (haiku, n=3) ===
+  arm               wrote%  correct     LOC   tot_tok    $/run  time_s
+  scalpel              1.0      1.0      24    303619  $0.0681    41.0
+
+=== tmpl-fe-rating  (haiku, n=3) ===
+  arm               wrote%  correct     LOC   tot_tok    $/run  time_s
+  scalpel              1.0      1.0     112    215927  $0.0523    30.1
+
+wrote /Users/piyushaneja/Desktop/skill/benchmarks/agentic/runs/20260703-184428/results.json + summary.json (6 cells)
