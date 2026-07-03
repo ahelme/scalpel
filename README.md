@@ -51,7 +51,13 @@ Then three rules the ladder guys don't have:
 
 ## Numbers
 
-Measured on the same harness ponytail uses (vendored from their repo, MIT — same 5 tasks, same execution-based correctness gate, same LOC counter), four arms, 3 Claude models × 10 repeats per cell (n=50), no cache. Scalpel vs ponytail, medians:
+Measured on the same harness ponytail uses (vendored from their repo, MIT — same 5 tasks, same execution-based correctness gate, same LOC counter), four arms, 3 Claude models × 10 repeats per cell (n=50), no cache.
+
+<p align="center">
+  <img src="assets/benchmark-single-shot.svg" width="860" alt="Median lines of code per answer across baseline, caveman, ponytail, and scalpel, on Haiku 4.5, Sonnet 4.6, and Opus 4.8. Scalpel is lowest on every model.">
+</p>
+
+Scalpel vs ponytail, medians:
 
 | model | LOC | tokens | cost | latency | correctness |
 |---|--:|--:|--:|--:|--:|
@@ -62,6 +68,10 @@ Measured on the same harness ponytail uses (vendored from their repo, MIT — sa
 Beats or ties on **every cell**, loses none — and vs the no-skill baseline: ~90% less code at ~4× lower cost. Ponytail's only correctness failures in the run were real: it prescribed `email_validator`, a package that wasn't installed, and the code died — the exact "artery" scalpel's dependency rule guards. Full tables, failure notes, and honesty caveats: [benchmarks/results/2026-07-03-single-shot.md](benchmarks/results/2026-07-03-single-shot.md).
 
 **Agentic** (real headless Claude Code sessions on a real FastAPI+React repo, ponytail's own harness, 12 features + 7 adversarial safety tasks): a statistical tie with ponytail — scalpel edges LOC, time, and over-engineering flags; ponytail edges cost by ~3%; both 100% correct, 100% safe, both ~69% less code than no-skill, and the completeness judge confirms scalpel's low LOC isn't stub-shipping (3.00/3, min 3, every cell). Where ponytail's README admits its per-task cut is "near zero on already-minimal code", scalpel holds the same floor while winning the single-shot suite outright. Details: [benchmarks/results/2026-07-03-agentic.md](benchmarks/results/2026-07-03-agentic.md).
+
+<p align="center">
+  <img src="assets/benchmark-agentic.svg" width="760" alt="Agentic benchmark results as a percent of the no-skill baseline for source LOC, cost, and time. Ponytail and scalpel land within a few points of each other on every metric, both far below baseline.">
+</p>
 
 Reproduce:
 

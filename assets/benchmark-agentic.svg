@@ -1,0 +1,43 @@
+<svg viewBox="0 0 760 420" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica,Arial,sans-serif">
+<rect width="760" height="420" fill="#fcfcfb"/>
+<text x="380.0" y="32" text-anchor="middle" font-size="18" font-weight="600" fill="#1a1a19">Agentic benchmark: percent of no-skill baseline</text>
+<text x="380.0" y="52" text-anchor="middle" font-size="12.5" fill="#52514e">Real headless Claude Code sessions, 12 features, Haiku 4.5, n=3/arm. Lower is better.</text>
+<line x1="141.0" y1="340.0" x2="619.0" y2="340.0" stroke="#e3e1d8" stroke-width="1"/>
+<text x="133.0" y="344.0" text-anchor="end" font-size="11" fill="#52514e">0%</text>
+<line x1="141.0" y1="272.5" x2="619.0" y2="272.5" stroke="#e3e1d8" stroke-width="1"/>
+<text x="133.0" y="276.5" text-anchor="end" font-size="11" fill="#52514e">25%</text>
+<line x1="141.0" y1="205.0" x2="619.0" y2="205.0" stroke="#e3e1d8" stroke-width="1"/>
+<text x="133.0" y="209.0" text-anchor="end" font-size="11" fill="#52514e">50%</text>
+<line x1="141.0" y1="137.5" x2="619.0" y2="137.5" stroke="#e3e1d8" stroke-width="1"/>
+<text x="133.0" y="141.5" text-anchor="end" font-size="11" fill="#52514e">75%</text>
+<line x1="141.0" y1="70.0" x2="619.0" y2="70.0" stroke="#e3e1d8" stroke-width="1"/>
+<text x="133.0" y="74.0" text-anchor="end" font-size="11" fill="#52514e">100%</text>
+<path d="M151.0,340.0 L151.0,74.0 Q151.0,70.0 155.0,70.0 L177.0,70.0 Q181.0,70.0 181.0,74.0 L181.0,340.0 Z" fill="#2a78d6"/>
+<text x="166.0" y="64.0" text-anchor="middle" font-size="11.5" fill="#1a1a19">100%</text>
+<path d="M189.0,340.0 L189.0,259.22 Q189.0,255.22 193.0,255.22 L215.0,255.22 Q219.0,255.22 219.0,259.22 L219.0,340.0 Z" fill="#eda100"/>
+<text x="204.0" y="249.22" text-anchor="middle" font-size="11.5" fill="#1a1a19">31.4%</text>
+<path d="M227.0,340.0 L227.0,261.11 Q227.0,257.11 231.0,257.11 L253.0,257.11 Q257.0,257.11 257.0,261.11 L257.0,340.0 Z" fill="#eb6834"/>
+<text x="242.0" y="251.11" text-anchor="middle" font-size="11.5" fill="#1a1a19">30.7%</text>
+<text x="204.0" y="364" text-anchor="middle" font-size="13" font-weight="600" fill="#1a1a19">Source LOC</text>
+<path d="M327.0,340.0 L327.0,74.0 Q327.0,70.0 331.0,70.0 L353.0,70.0 Q357.0,70.0 357.0,74.0 L357.0,340.0 Z" fill="#2a78d6"/>
+<text x="342.0" y="64.0" text-anchor="middle" font-size="11.5" fill="#1a1a19">100%</text>
+<path d="M365.0,340.0 L365.0,147.44 Q365.0,143.44 369.0,143.44 L391.0,143.44 Q395.0,143.44 395.0,147.44 L395.0,340.0 Z" fill="#eda100"/>
+<text x="380.0" y="137.44" text-anchor="middle" font-size="11.5" fill="#1a1a19">72.8%</text>
+<path d="M403.0,340.0 L403.0,142.31 Q403.0,138.31 407.0,138.31 L429.0,138.31 Q433.0,138.31 433.0,142.31 L433.0,340.0 Z" fill="#eb6834"/>
+<text x="418.0" y="132.31" text-anchor="middle" font-size="11.5" fill="#1a1a19">74.7%</text>
+<text x="380.0" y="364" text-anchor="middle" font-size="13" font-weight="600" fill="#1a1a19">Cost</text>
+<path d="M503.0,340.0 L503.0,74.0 Q503.0,70.0 507.0,70.0 L529.0,70.0 Q533.0,70.0 533.0,74.0 L533.0,340.0 Z" fill="#2a78d6"/>
+<text x="518.0" y="64.0" text-anchor="middle" font-size="11.5" fill="#1a1a19">100%</text>
+<path d="M541.0,340.0 L541.0,136.1 Q541.0,132.1 545.0,132.1 L567.0,132.1 Q571.0,132.1 571.0,136.1 L571.0,340.0 Z" fill="#eda100"/>
+<text x="556.0" y="126.1" text-anchor="middle" font-size="11.5" fill="#1a1a19">77%</text>
+<path d="M579.0,340.0 L579.0,140.42 Q579.0,136.42 583.0,136.42 L605.0,136.42 Q609.0,136.42 609.0,140.42 L609.0,340.0 Z" fill="#eb6834"/>
+<text x="594.0" y="130.42" text-anchor="middle" font-size="11.5" fill="#1a1a19">75.4%</text>
+<text x="556.0" y="364" text-anchor="middle" font-size="13" font-weight="600" fill="#1a1a19">Time</text>
+<line x1="141.0" y1="340" x2="619.0" y2="340" stroke="#52514e" stroke-width="1.2"/>
+  <circle cx="147.0" cy="402" r="6" fill="#2a78d6"/>
+  <text x="159.0" y="406" font-size="13" fill="#52514e" font-family="Helvetica,Arial,sans-serif">baseline (no skill)</text>
+  <circle cx="324.0" cy="402" r="6" fill="#eda100"/>
+  <text x="336.0" y="406" font-size="13" fill="#52514e" font-family="Helvetica,Arial,sans-serif">ponytail</text>
+  <circle cx="424.0" cy="402" r="6" fill="#eb6834"/>
+  <text x="436.0" y="406" font-size="13" fill="#52514e" font-family="Helvetica,Arial,sans-serif">scalpel</text>
+</svg>
