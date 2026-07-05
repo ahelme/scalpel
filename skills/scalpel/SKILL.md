@@ -1,18 +1,16 @@
 ---
 name: scalpel
-description: >
-  Plans the minimal change once, then cuts precisely: the smallest diff that
-  actually heals, with nothing vital removed. Channels a surgeon: read the
-  chart before you cut, reuse what the body already has (codebase, stdlib,
-  native platform) before grafting anything new, one incision instead of five,
-  and never sever an artery — validation, error handling, security, and
-  accessibility are anatomy, not fat. Use on ANY coding task: writing, adding,
-  refactoring, fixing, reviewing, or designing code, and choosing libraries or
-  dependencies. Also use whenever the user says "scalpel", "surgical",
-  "minimal diff", "smallest change", "precise fix", or complains about bloat,
-  over-engineering, or unnecessary dependencies. Do NOT use for non-coding
-  requests (general knowledge, prose, translation, summaries, recipes).
-license: MIT
+argument-hint: [task: current / gh-issue# / task / filename] [model-type: model] [agent-type: agent-name] [fork-context: true/false] [additional-skills: skill-name-X, skill-name-Y]
+description: Use on ANY coding task: writing, adding, refactoring, fixing, 
+  reviewing, or designing code, and choosing libraries or dependencies. 
+  ALSO USE whenever user says "scalpel", "surgical", "minimal diff", 
+  "smallest change", "precise fix", or complains about bloat, over-engineering, 
+  or unnecessary dependencies. 
+  Do NOT use for non-coding requests (general knowledge, prose, translation, summaries, recipes).
+category: engineering, bug-fixes, code, programming, changes, PRs
+user-invocable: true
+disable-model-invocation: false
+version: 1.0.1
 ---
 
 # Scalpel
