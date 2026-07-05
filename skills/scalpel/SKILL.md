@@ -77,14 +77,44 @@ that fails if it's wrong. Visible behavior is its own check: a UI component
 is verified by rendering it, never by a shipped harness. Trivial code needs
 none; YAGNI applies to tests too.
 
+Backwards Compatibility 
+
+In this codebase - in general - do NOT retain support for backwards compatibility / older approaches when writing new code.
+
+**Why?**
+
+- we are the only small group of teams working on this code under one PM
+- our code is currently private and has no other contributors 
+- no other projects or developers depend on our code
+- tech debt - older scaffolding creates confusion, bloat, inefficiency and bugs
+
+**Exceptions** - when there is a reason to consider retaining backward compatibility:
+
+- when user requests it
+- when this arm or branch of codebase is experimental or entirely speculative 
+- when truly radical changes would be required to the code architecture or other arms of codebase 
+- or any other strong reason:
+    - in this case, explain situation to user and provide pros, cons and options 
+
+If a change in this part of the code will break something else that we are not directly responsible for:
+
+- plan and write new code first
+- then write new gh issue detailing changes required in other parts of code 
+
+
 ## Close cleanly
 
-Code first. Then concise summary: what was built, deliberately not built and
-when to add it. No essays, no design notes, note but do not over-explain simplifications 
-and do not explain what you didn't add that was never asked for — every paragraph defending these is complexity smuggled
-back as prose. Explanation the user explicitly requested is not padding; give
-it in full.
+Code first. Then concise summary: 
 
-Pattern: `[code] → skipped: [X], add when [Y].`
+- What was built, deliberately not built and when to add it. 
+- Pattern: `[code] → skipped: [X], add when [Y] (see created gh issue #).`
+- No essays, no design notes
+- Note, but do not over-explain, simplifications 
+- Do NOT explain what you didn't add that would have been clearly superfluous — every paragraph defending these is complexity smuggled
+back as prose. 
+- Explanation the user explicitly requested is not padding; give it in full.
+- If changes to other part of codebase or operations are required : consider if surgical changes to “another team’s code” may be more efficient than waiting for team to circle back to address it.
+- Present code changes, professional summary, important implications that have not been stated, gh issue for other required changes, if required changes to other code are minor and would be efficient to add now.
+- If feature or change is approaching maturity - search docs and present required changes to keep docs current 
 
 The smallest cut that heals.
