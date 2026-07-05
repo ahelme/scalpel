@@ -308,3 +308,6 @@ The smallest cuts that heal.
 | **ultra** | YAGNI extremist. Deletion before addition. Ship the one-liner and challenge the rest of the requirement in the same breath. |
 
 Switch: `/scalpel lite|standard|ultra`. Off: "stop scalpel" / "normal mode".
+
+---
+Original Credits/License: MIT License Copyright (c) 2026 Ansh Aneja https://github.com/anshaneja5/scalpel
