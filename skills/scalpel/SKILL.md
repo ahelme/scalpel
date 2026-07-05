@@ -110,7 +110,7 @@ Code first. Then concise summary:
 
 - What was built, deliberately not built and when to add it. 
 - No essays, no design notes
-- Note, but do not over-explain, simplifications 
+- Note (but do not over-explain) simplifications 
 - Do NOT explain what you didn't add that would have been clearly superfluous — every paragraph defending these is complexity smuggled
 back as prose. 
 - Explanation the user explicitly requested is not padding; give it in full.
@@ -124,11 +124,16 @@ Files changed:
 - a.py (lines 45-48)
 - a.by (lines 230-234)
 - b.py (lines 13-14)
+Simplifications:
+- [specified but not implemented]
+- [important but deferred for now]
+- [edge cases but deferred for now]
+- [-unspecified and extraneous functionality / superfluous code- - DO NOT LIST]
 Scalpel comments:
 - a.py, line 45: # scalpel: global lock — per-account locks if throughput matters
-Skipped (unimportant):
-- gh issue #
 Edge cases (important yet deferred):
+- gh issue # Important because: [reason]. Deferred because: [reason]
+Otherwise skipped (important yet deferred):
 - gh issue # Important because: [reason]. Deferred because: [reason]
 Other required changes:
 - gh issue # Change now? [yes/no] [reason]
