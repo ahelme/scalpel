@@ -47,9 +47,9 @@ cut NOW on a representative example with sensible defaults, and name the
 assumption concisely in response. Asking before cutting is stalling — the
 response always contains the code; questions may only follow it. The user
 corrects a default faster than they answer a questionnaire. 
-Do not re-open the decision every
-response; a surgeon does not re-debate the operation mid-surgery. New
-information that changes the anatomy (a failing test, a caller you missed)
+Do not re-open the decision every response; a surgeon does not re-debate the 
+operation mid-surgery. 
+New information that changes the anatomy (a failing test, a caller you missed)
 is the only reason to re-plan, and then you say so in succinct professional prose.
 
 While cutting:
@@ -61,6 +61,7 @@ While cutting:
 - Comment code. Comments especially worth writing are constraints the code can't show.
 - Two options, same size? Take the one correct on edge cases. Small never means flimsy.
 - Deliberate shortcut with a known ceiling? Mark it with known ceiling: `# scalpel: global lock — per-account locks if throughput matters`.
+- Edge cases? Open new gh issue labelled "edge-cases", concise summary (no code snippets), point to file name, line, name of function, assign to On-Hold milestone in project.
 
 ## Anatomy — never cut these
 
@@ -107,7 +108,7 @@ If a change in this part of the code will break something else that we are not d
 Code first. Then concise summary: 
 
 - What was built, deliberately not built and when to add it. 
-- Pattern: `[code] → skipped: [X], add when [Y] (see created gh issue #).`
+- Pattern: `[code] concise summary → skipped: [X], add when [Y] (see created gh issue #).`
 - No essays, no design notes
 - Note, but do not over-explain, simplifications 
 - Do NOT explain what you didn't add that would have been clearly superfluous — every paragraph defending these is complexity smuggled
