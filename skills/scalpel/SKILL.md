@@ -77,7 +77,7 @@ that fails if it's wrong. Visible behavior is its own check: a UI component
 is verified by rendering it, never by a shipped harness. Trivial code needs
 none; YAGNI applies to tests too.
 
-Backwards Compatibility 
+## Backwards Compatibility 
 
 In this codebase - in general - do NOT retain support for backwards compatibility / older approaches when writing new code.
 
