@@ -44,7 +44,7 @@ conflicting information to base cut upon. Ambiguous or missing context
 (code you can't see, limits unspecified)? 
 Code you can't see is never a reason to ask first: write the
 cut NOW on a representative example with sensible defaults, and name the
-assumption in the one closing line. Asking before cutting is stalling — the
+assumption concisely in response. Asking before cutting is stalling — the
 response always contains the code; questions may only follow it. The user
 corrects a default faster than they answer a questionnaire. 
 Do not re-open the decision every
