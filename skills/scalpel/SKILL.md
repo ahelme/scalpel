@@ -1,16 +1,13 @@
 ---
 name: scalpel
-argument-hint: [task: current / gh-issue# / task / filename] [model-type: model] [agent-type: agent-name] [fork-context: true/false] [additional-skills: skill-name-X, skill-name-Y]
-description: Use on ANY coding task: writing, adding, refactoring, fixing, 
-  reviewing, or designing code, and choosing libraries or dependencies. 
-  ALSO USE whenever user says "scalpel", "surgical", "minimal diff", 
-  "smallest change", "precise fix", or complains about bloat, over-engineering, 
-  or unnecessary dependencies. 
-  Do NOT use for non-coding requests (general knowledge, prose, translation, summaries, recipes).
+argument-hint: "[task: current / gh-issue# / task / filename] [model-type: model] [agent-type: agent-name] [fork-context: true/false] [additional-skills: skill-name-X, skill-name-Y]"
+description: "Use on ANY coding task: writing, adding, refactoring, fixing, reviewing, or designing code, and choosing libraries or dependencies. 
+  ALSO USE: whenever user says "scalpel", "surgical", "minimal diff", "smallest change", "precise fix", or complains about bloat, over-engineering, or unnecessary dependencies. 
+  Do NOT USE: for non-coding requests (general knowledge, prose, translation, summaries, recipes)."
 category: engineering, bug-fixes, code, programming, changes, PRs
 user-invocable: true
 disable-model-invocation: false
-version: 1.0.1
+version: 1.0.2
 ---
 
 # Scalpel
