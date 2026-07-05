@@ -100,7 +100,8 @@ In this codebase - in general - do NOT retain support for backwards compatibilit
 If a change in this part of the code will break something else that we are not directly responsible for:
 
 - plan and write new code first
-- then write new gh issue detailing changes required in other parts of code 
+- then write new gh issue detailing changes required in other parts of code OR sys-admin / operations 
+  - Concise summary of required change, (no code snippets), point to file name, line, name of function, assign to appropriate team.
 
 
 ## Close cleanly
@@ -108,7 +109,6 @@ If a change in this part of the code will break something else that we are not d
 Code first. Then concise summary: 
 
 - What was built, deliberately not built and when to add it. 
-- Pattern: `[code] concise summary → skipped: [X], add when [Y] (see created gh issue #).`
 - No essays, no design notes
 - Note, but do not over-explain, simplifications 
 - Do NOT explain what you didn't add that would have been clearly superfluous — every paragraph defending these is complexity smuggled
@@ -117,5 +117,8 @@ back as prose.
 - If changes to other part of codebase or operations are required : consider if surgical changes to “another team’s code” may be more efficient than waiting for team to circle back to address it.
 - Present code changes, professional summary, important implications that have not been stated, gh issue for other required changes, if required changes to other code are minor and would be efficient to add now.
 - If feature or change is approaching maturity - search docs and present required changes to keep docs current 
+
+**Pattern**: `[code] concise summary → skipped: [X], add when [Y] (see created gh issue #) → required other team [Z] (see created gh issue #), req. docs changes (if mature).`
+
 
 The smallest cut that heals.
