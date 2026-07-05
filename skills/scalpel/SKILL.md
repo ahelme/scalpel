@@ -44,7 +44,13 @@ The test: Every changed line should trace directly to the user's request.
 
 Understand the problem fully.
 
-If research / planning has not yet been performed 
+A good surgeon [tools/skills (check if existing/available)]:
+
+- takes a full patient history [gh issues (SEARCH), PR history, mermaid diagrams, docs/wiki]
+- monitors blood pressure, temperature (how healthy is performance, what errors have plagued this project) [Sentry/PostHog, Prometheus & Grafana]
+  
+If research / planning has not yet been performed follow these steps: 
+
 — read the docs, search the wiki
 - if facts conflict - ask user: which applies?
 - check release notes of libraries since your training date
@@ -59,14 +65,16 @@ If research / planning has not yet been performed
 
 ## Before you cut: use your instruments and monitors
 
-A good surgeon: 
-- monitors blood pressure, temperature (what errors have been plaguing this project)
-- reviews scans before making an incision (what does the code do exactly already)
-- rehearses changes and notes risks (think through / map changes)
-- seeks advice where genuine uncertainties exist (don't risk injury because you were ashamed to ask)
+A good surgeon [tools/skills (check if existing/available)]: 
+
+- reviews scans before making an incision (what does the code do exactly already) [graphify, grep]
+- rehearses changes and notes risks (think through / map changes) [chain of thought / scratchpad]
+- seeks advice where genuine uncertainties exist (don't risk injury because you were ashamed to ask) [ask user / request discussion]
 
 If you are ready to implement:
-- search the code (and graphify if exists)
+- search the code [graphify, grep]
+- read context around code
+- search for / read related functions
 - trace the real flow of change to make, every file the change touches.
 
 Then, in order, prefer what already exists:
@@ -77,25 +85,31 @@ Then, in order, prefer what already exists:
 4. **An installed dependency** — never add a new one for what a few lines do, and never prescribe a package you don't know is installed: code that needs a pip/npm install the user didn't ask for is code that doesn't run. When in doubt, stdlib runs everywhere.
 5. **Only then: new code** — the minimum that works. One line if one line works.
 
-## One incision
+## After planning - surgical incision
 
-Decide the plan ONCE — what to touch, what to reuse, roughly how small the
-diff is — and decide it in your head. The user sees the incision, not the
-deliberation: never print a plan section, an options menu, or a "before I
-code" analysis UNLESS unsure how to proceed or uncertain of facts e.g you found 
-conflicting information to base cut upon. Ambiguous or missing context 
-(code you can't see, limits unspecified)? 
-Code you can't see is never a reason to ask first: write the
-cut NOW on a representative example with sensible defaults, and name the
-assumption concisely in response. Asking before cutting is stalling — the
-response always contains the code; questions may only follow it. The user
-corrects a default faster than they answer a questionnaire. 
-Do not re-open the decision every response; a surgeon does not re-debate the 
-operation mid-surgery. 
-New information that changes the anatomy (a failing test, a caller you missed)
-is the only reason to re-plan, and then you say so in succinct professional prose.
+Planning should be complete - if not return to planning stage above) then:
+— what to touch, what to reuse, roughly how small the diff is — decide it in your head. 
 
-While cutting:
+Given a plan has already been made - the user sees the incision and report, not the deliberation: 
+- never PRINT a whole new plan section, options menu, or unnecessary "before I code" analysis 
+- UNLESS unsure how to proceed or uncertain of facts e.g. you found conflicting information to base cut upon. 
+
+Ambiguous or missing context (code you can't see, limits unspecified)? 
+- (assuming plan already complete) code you can't see is never a reason to ask first: 
+  - write the cut NOW on a representative example with sensible defaults
+  - name theassumptions made concisely in response. 
+
+Asking before cutting is stalling:
+- the response always contains the code; questions may only follow it.
+- The user corrects a default faster than they answer a post-planning stage questionnaire. 
+
+Do not re-open the decision every move:
+- a surgeon does not re-debate the operation mid-surgery. 
+
+New information that changes the anatomy (a failing test, a caller you missed) is the only reason to re-plan:
+- simply say so to user, in succinct professional prose.
+
+While cutting - keep cuts clean and precise:
 - Fewest files, shortest working diff — in the right place. A small change in the wrong place is a second wound.
 - The dependency manifest (package.json, pyproject.toml, requirements) is not yours to touch unless the task explicitly demands a new package.
 - No unrequested abstractions: no interface with one implementation, no factory for one product, no decorator or class for a single call site (inline it), no config for a constant, no scaffolding "for later".
@@ -123,7 +137,7 @@ none; YAGNI applies to tests too.
 
 ## Backwards Compatibility 
 
-In this codebase - in general - do NOT retain support for backwards compatibility / older approaches when writing new code.
+In this codebase - in general - do NOT retain support for backwards compatibility.
 
 **Why?**
 
@@ -131,6 +145,7 @@ In this codebase - in general - do NOT retain support for backwards compatibilit
 - our code is currently private and has no other contributors 
 - no other projects or developers depend on our code
 - tech debt - older scaffolding creates confusion, bloat, inefficiency and bugs
+- git means reverting is trivial
 
 **Exceptions** - when there is a reason to consider retaining backward compatibility:
 
@@ -140,35 +155,42 @@ In this codebase - in general - do NOT retain support for backwards compatibilit
 - or any other strong reason:
     - in this case, explain situation to user and provide pros, cons and options 
 
-If a change in this part of the code will break something else that you/we are not directly responsible for:
+**Internally breaking changes** If something else that you/we are not directly responsible for may break:
 
-- Plan and write our new code first, then:
-  - Submit new gh issue detailing changes required in other parts of code or via sys-admin / operations 
+- Finish our new code first, then:
+  - Submit a new gh issue detailing changes required in other parts of code or via sys-admin / operations 
   - Include:
     - concise 1-3 para. summary of required change (no code snippets)
-    - list of file names, point to lines and names of functions
+    - list of file names, point to lines and list names of functions
     - point to commit/PR and original gh issue 
     - assign to appropriate team
+    - assign to current milestone
     - label as "required-change"
-    - use existing gh issue skill if one exists
+    - use existing gh issue skill to complete this if one exists
 
 ## Close cleanly
 
-Code first. Then tie up your stitches by building a concise summary: 
+Code first. Then tie up your stitches with a concise summary: 
 
 - Fill out the Response Template below, with following principles in mind:
-  - What was built, deliberately not built, gh issue that notes it, and when to add it. 
+  - Include: what was built, deliberately not built, gh issue that notes such tasks, and when to add it. 
   - No essays, no design notes
-  - Note simplifications 
-    - But do NOT over-explain would have been clearly superfluous — every paragraph defending these is complexity smuggled back as prose.
-    - You are valued, clever and competent - you do not need to prove your worth, but weigh the team down by indulging in cleverness for its own sake.
-  - Explanation which the user explicitly requested is not padding; give it in full.
-  - If changes to other part of codebase or operations are required: consider if surgical changes to “another team’s code” may be more efficient than waiting for team to circle back to address it (each cycle creates inefficiencies).
-    - Do not make such changes without asking - but do propose them if minor, efficient and sensible. 
-  - Present professional summary of changes, important implications as yet unstated, gh issue created for further required changes.
-  - If feature / change is approaching maturity (tested and working) -
+  - Note the simplifications made
+    - But do NOT explain would have been superfluous — every paragraph defending these is complexity smuggled back as prose.
+    - You are valued, competent and clever - you do not need to prove it, but you will weigh the team down by indulging in cleverness for its own sake.
+  - Explanation which the user explicitly requested is NOT padding; give it in full.
+  - If changes to other parts of codebase, or sys-admin/ops are required:
+    - Consider if surgical changes to “another team’s code” may be more efficient than waiting for team to circle back to address it
+    - Why? each cycle creates drag, you're a full-stack developer, if you document and communicate changes there is no loss
+    - Do not make such changes without asking
+    - But DO propose them: if minor, efficient and sensible 
+  - Present professional summary of
+    - changes
+    - any significant risks or important implications as yet unstated
+    - gh issues created for further required changes / edge-cases
+  - If feature / change is approaching maturity (tested and working):
     - search docs/wiki for relevant / related information
-    - present required updates to keep docs current 
+    - present list of required updates to keep docs current 
 
 **Response Template**: 
 
@@ -198,12 +220,12 @@ Otherwise skipped (important yet deferred):
 Other required changes:
 - gh issue # Minimal change we could complete ourselves now? [yes/no] [reason]
 
-Docs to update (if change is tested and mature)
+Docs to update (if changes are tested, mature and ready to merge):
 - path/doc_a.md / wiki page a.html
 - path/doc_b.md / wiki page b.html
 ```
 
-The smallest cut that heals.
+The smallest cuts that heal.
 
 ## Intensity levels:
 
