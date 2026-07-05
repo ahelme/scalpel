@@ -73,36 +73,42 @@ A good surgeon [tools/skills (check if existing/available)]:
   
 If research / planning has not yet been performed follow these steps: 
 
-— read the docs, search the wiki
-- if facts conflict - ask user: which applies?
-- check release notes of libraries since your training date
-  - check/write down your training date
-  - check latest package date
-  - read ALL changelogs since (not most recent only)
-- research how others have solved this problem (this exact problem - but also others similar in nature)
-- take genuinely useful ideas from others - don't reinvent the wheel (search Github and the web)
-- modify ideas to suit how this repo is already structured
-- research up-to-date best practices (search the web and the docs on Context7) 
-- if multiple good options present - discuss options with user first (present pros/cons)
-- define success clearly
-- plan verification steps
-- plan to loop until success criteria have been verified workiing
+- [ ] review this project
+  - [ ] read full PR history if one exists
+  - [ ] search & read the docs / wiki
+  - [ ] search & read gh issues (read in-full THIS issue and its comments + search related issues)
+  - [ ] search & review architectural diagrams / code graphs
+  - [ ] use Sentry (or Posthog) and Prometheus/Grafana if tools exist to check for related performance issues and errors
+- [ ] if facts conflict - ask user: which applies? (DON'T assume)
+- [ ] check release notes of libraries in use since your training cutoff
+  - [ ] check/write down your training cutoff date
+  - [ ] check latest package date
+  - [ ] search & read ALL changelogs since training cutoff (NOT only most recent)
+- [ ] research how others have solved this problem (this exact problem - but also others similar in nature)
+  - [ ] take genuinely useful ideas from others - don't reinvent the wheel (search Github and the web)
+  - [ ] modify ideas to suit how this repo is already structured
+- [ ] research up-to-date best practices (search the web and the docs on Context7) 
+- [ ] form a coherent, informed picture of the problem
+- [ ] draft solutions
+  - [ ] if multiple good options present - discuss options with user first (present pros/cons)
+- [ ] define success clearly in set of Success Criteria
+- [ ] plan verification steps (run tests and/or browser testing)
+- [ ] plan to loop iterations of fix until all success criteria have been verified workiing
 
 If you receive a plan lacking any of these steps/information - complete them now.   
 
 ## Goal-Driven Execution - Define Successful Surgery
 Define success criteria. Loop until verified.
 
-Transform tasks into verifiable goals:
+- [ ] Transform implementation tasks into verifiable goals:
+  - "Add validation" → "Write tests for invalid inputs, then make them pass"
+  - "Fix the bug" → "Write a test that reproduces it (don't game the system), then make it pass"
+  - "Refactor X" → "Ensure tests pass before and after"
 
-"Add validation" → "Write tests for invalid inputs, then make them pass"
-"Fix the bug" → "Write a test that reproduces it (don't game the system), then make it pass"
-"Refactor X" → "Ensure tests pass before and after"
-
-For multi-step tasks, state a brief plan:
-1. [Step] → verify: [check]
-2. [Step] → verify: [check]
-3. [Step] → verify: [check]
+- [ ] For multi-step tasks, state a brief set of Verification Steps e.g.
+  1. [Step] → verify: [check]
+  2. [Step] → verify: [check]
+  3. [Step] → verify: [check]
 
 Strong success criteria let you loop independently. Weak criteria ("make it work") require constant clarification.
 
@@ -115,32 +121,34 @@ A good surgeon [tools/skills (check if existing/available)]:
 - seeks advice where genuine uncertainties exist (don't risk injury because you were ashamed to ask) [ask user / request discussion]
 
 If you are ready to implement:
-- search the code [graphify, grep]
-- read context around code
-- search for / read related functions
-- trace the real flow of change to make, every file the change touches.
+- [ ] review plan
+- [ ] search the code [graphify, grep]
+- [ ] read context around code
+- [ ] search for / understand related functions
+- [ ] trace the real flow of change to make, every file the change touches.
 
-Then, in order, prefer what already exists:
+Then, in order, prefer what already exists, by running through this ladder of options:
 
-1. **Nothing** — speculative need? Don't operate. Say so in one line. (YAGNI)
-2. **This codebase** — graphify and grep for the helper/util/pattern before writing it; read the context around the code; re-implementing what lives three files over is the most common malpractice. Bug fix = root cause: guard the shared function all callers route through, not the one path the ticket names.
-3. **Stdlib, then native platform** — `<input type="date">` over a picker lib, CSS over JS, a DB constraint over app code, `lru_cache` over a cache class. This holds inside a component-library codebase too: a thin wrapper around the native control beats hand-building (or installing) a calendar, popover, or palette — the browser already ships one. Tripwire: if a diff for one UI control passes ~30 lines, you are rebuilding something the platform ships — stop and take the native element. Matching the codebase's component idiom never justifies variants, size props, or states the ticket didn't ask for.
-4. **An installed dependency** — never add a new one for what a few lines do, and never prescribe a package you don't know is installed: code that needs a pip/npm install the user didn't ask for is code that doesn't run. When in doubt, stdlib runs everywhere.
-5. **Only then: new code** — the minimum that works. One line if one line works.
+- [ ] 1. **Nothing** — speculative need? Don't operate. Say so in one line. (YAGNI)
+- [ ] 2. **This codebase** — graphify and grep for the helper/util/pattern before writing it; read the context around the code; re-implementing what lives three files over is the most common malpractice. Bug fix = root cause: guard the shared function all callers route through, not the one path the ticket names.
+- [ ] 3. **Stdlib, then native platform** — `<input type="date">` over a picker lib, CSS over JS, a DB constraint over app code, `lru_cache` over a cache class. This holds inside a component-library codebase too: a thin wrapper around the native control beats hand-building (or installing) a calendar, popover, or palette — the browser already ships one. Tripwire: if a diff for one UI control passes ~30 lines, you are rebuilding something the platform ships — stop and take the native element. Matching the codebase's component idiom never justifies variants, size props, or states the ticket didn't ask for.
+- [ ] 4. **An installed dependency** — never add a new one for what a few lines do, and never prescribe a package you don't know is installed: code that needs a pip/npm install the user didn't ask for is code that doesn't run. When in doubt, stdlib runs everywhere.
+- [ ] 5. **Only then: new code** — the minimum that works. One line if one line works.
 
 ## After planning - make surgical incisions (on the right tissue)
 
+Follow this guide to make surgical code changes:
+
 Planning should be complete - if not return to planning stage above) then:
-— what to touch, what to reuse, roughly how small the diff is — decide it in your head. 
+- what to touch, what to reuse, roughly how small the diff is — decide it in your head. 
 
 Given a plan has already been made - the user sees the incision and report, not the deliberation: 
 - never PRINT a whole new plan section, options menu, or unnecessary "before I code" analysis 
 - UNLESS unsure how to proceed or uncertain of facts e.g. you found conflicting information to base cut upon. 
 
-Ambiguous or missing context (code you can't see, limits unspecified)? 
-- (assuming plan already complete) code you can't see is never a reason to ask first: 
-  - write the cut NOW on a representative example with sensible defaults
-  - name the assumptions made concisely in response. 
+Ambiguous or missing context (code you can't see, limits unspecified)? (assuming plan already complete) code you can't see is never a reason to ask first: 
+- write the cut NOW on a representative example with sensible defaults
+- name the assumptions made concisely in draft response. 
 
 Asking before cutting is stalling:
 - the response always contains the code; questions may only follow it.
@@ -201,16 +209,16 @@ In this codebase - in general - do NOT retain support for backwards compatibilit
 
 **Internally breaking changes** If something else that you/we are not directly responsible for may break:
 
-- Finish our new code first, then:
-  - Submit a new gh issue detailing changes required in other parts of code or via sys-admin / operations 
-  - Include:
-    - concise 1-3 para. summary of required change (no code snippets)
-    - list of file names, point to lines and list names of functions
-    - point to commit/PR and original gh issue 
-    - assign to appropriate team
-    - assign to current milestone
-    - label as "required-change"
-    - use existing gh issue skill to complete this if one exists
+Finish our new code changes first, then:
+  - [ ] Submit a new gh issue detailing changes required in other parts of code or via sys-admin / operations 
+  - [ ] Include:
+    - [ ] concise 1-3 para. summary of required change (no code snippets)
+    - [ ] list of file names, point to lines and list names of functions
+    - [ ] point to commit/PR and original gh issue 
+    - [ ] assign to appropriate team
+    - [ ] assign to current milestone
+    - [ ] label as "required-change"
+    - [ ] use existing gh issue skill to complete this if one exists
 
 ## Close cleanly
 
@@ -218,7 +226,7 @@ Code first, verify, loop until success criteria is met.
 
 Then tie up your stitches with a concise summary: 
 
-- Fill out the Response Template below, with following principles in mind:
+- [ ] Fill out the Response Template below, with following principles in mind:
   - Include: what was built, deliberately not built, gh issue that notes such tasks, and when to add it. 
   - No essays, no design notes
   - Note the simplifications made:
@@ -238,9 +246,11 @@ Then tie up your stitches with a concise summary:
     - search docs/wiki for relevant / related information
     - present list of required updates to keep docs current
 
-**Response Template**: 
+**Completion Template**: 
 
-```
+- [ ] Complete following Completion Template
+
+```markdown
 One line summary [code changes] → skipped: [X], add when [Y] (see created gh issue #) → required changes by other team [Z] (see created gh issue #).
 
 Summary of code changes:
