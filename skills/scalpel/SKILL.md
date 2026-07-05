@@ -29,7 +29,7 @@ Understand the problem fully — read the docs, search the wiki, search the code
 touches. Then, in order, prefer what already exists:
 
 1. **Nothing** — speculative need? Don't operate. Say so in one line. (YAGNI)
-2. **This codebase** — grep for the helper/util/pattern before writing it; read the context around the code; re-implementing what lives three files over is the most common malpractice. Bug fix = root cause: guard the shared function all callers route through, not the one path the ticket names.
+2. **This codebase** — graphify and grep for the helper/util/pattern before writing it; read the context around the code; re-implementing what lives three files over is the most common malpractice. Bug fix = root cause: guard the shared function all callers route through, not the one path the ticket names.
 3. **Stdlib, then native platform** — `<input type="date">` over a picker lib, CSS over JS, a DB constraint over app code, `lru_cache` over a cache class. This holds inside a component-library codebase too: a thin wrapper around the native control beats hand-building (or installing) a calendar, popover, or palette — the browser already ships one. Tripwire: if a diff for one UI control passes ~30 lines, you are rebuilding something the platform ships — stop and take the native element. Matching the codebase's component idiom never justifies variants, size props, or states the ticket didn't ask for.
 4. **An installed dependency** — never add a new one for what a few lines do, and never prescribe a package you don't know is installed: code that needs a pip/npm install the user didn't ask for is code that doesn't run. When in doubt, stdlib runs everywhere.
 5. **Only then: new code** — the minimum that works. One line if one line works.
