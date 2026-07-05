@@ -1,9 +1,10 @@
 ---
 name: scalpel
 argument-hint: "[task: current / gh-issue# / task / filename] [model-type: model] [agent-type: agent-name] [fork-context: true/false] [additional-skills: skill-name-X, skill-name-Y]"
-description: "Use on ANY coding task: writing, adding, refactoring, fixing, reviewing, or designing code, and choosing libraries or dependencies. 
-  ALSO USE: whenever user says "scalpel", "surgical", "minimal diff", "smallest change", "precise fix", or complains about bloat, over-engineering, or unnecessary dependencies. 
-  Do NOT USE: for non-coding requests (general knowledge, prose, translation, summaries, recipes)."
+description: |
+  Use on ANY coding task: writing, adding, refactoring, fixing, reviewing, or designing code, and choosing libraries or dependencies.
+  ALSO USE: whenever user says "scalpel", "surgical", "minimal diff", "smallest change", "precise fix", or complains about bloat, over-engineering, or unnecessary dependencies.
+  Do NOT USE: for non-coding requests (general knowledge, prose, translation, summaries, recipes).
 category: engineering, bug-fixes, code, programming, changes, PRs
 user-invocable: true
 disable-model-invocation: false
@@ -127,9 +128,9 @@ If you are ready to implement:
 Then, in order, prefer what already exists, by running through this ladder of options:
 
 - [ ] 1. **Nothing** — speculative need? Don't operate. Say so in one line. (YAGNI)
-- [ ] 2. **This codebase** — graphify and grep for the helper/util/pattern before writing it; read the context around the code; re-implementing what lives three files over is the most common malpractice. Bug fix = root cause: guard the shared function all callers route through, not the one path the ticket names.
-- [ ] 3. **Stdlib, then native platform** — `<input type="date">` over a picker lib, CSS over JS, a DB constraint over app code, `lru_cache` over a cache class. This holds inside a component-library codebase too: a thin wrapper around the native control beats hand-building (or installing) a calendar, popover, or palette — the browser already ships one. Tripwire: if a diff for one UI control passes ~30 lines, you are rebuilding something the platform ships — stop and take the native element. Matching the codebase's component idiom never justifies variants, size props, or states the ticket didn't ask for.
-- [ ] 4. **An installed dependency** — never add a new one for what a few lines do, and never prescribe a package you don't know is installed: code that needs a pip/npm install the user didn't ask for is code that doesn't run. When in doubt, stdlib runs everywhere.
+- [ ] 2. **This codebase** — graphify and grep for the helper/util/pattern before writing it; read the context around the code; re-implementing what lives three files over is the most common ma[...]
+- [ ] 3. **Stdlib, then native platform** — `<input type="date">` over a picker lib, CSS over JS, a DB constraint over app code, `lru_cache` over a cache class. This holds inside a component-li[...]
+- [ ] 4. **An installed dependency** — never add a new one for what a few lines do, and never prescribe a package you don't know is installed: code that needs a pip/npm install the user didn't [...]
 - [ ] 5. **Only then: new code** — the minimum that works. One line if one line works.
 
 ## After planning - make surgical incisions (on the right tissue)
@@ -160,7 +161,7 @@ New information that changes the anatomy (a failing test, a caller you missed) i
 While cutting - keep cuts clean and precise:
 - Shortest working diff — in the right place. A small change in the wrong place is a second wound.
 - The dependency manifest (package.json, pyproject.toml, requirements) is not yours to touch unless the task explicitly demands a new package.
-- No unrequested abstractions: no interface with one implementation, no factory for one product, no decorator or class for a single call site (inline it), no config for a constant, no scaffolding "for later".
+- No unrequested abstractions: no interface with one implementation, no factory for one product, no decorator or class for a single call site (inline it), no config for a constant, no scaffolding[...]
 - No unrequested features: no extra props, callbacks, options, controls, or formatting the task didn't ask for. A countdown asked to count down does not grow start/pause/reset buttons.
 - Deletion over addition. Boring over clever.
 - Comment code. Comments especially worth writing are constraints the code can't show.
@@ -229,7 +230,7 @@ Then tie up your stitches with a concise summary:
   - Note the simplifications made:
     - But do NOT explain would have been superfluous — every paragraph defending these is complexity smuggled back as prose.
     - You are valued, competent and clever - you do not need to prove it, but you will weigh the team down by indulging in cleverness for its own sake.
-  - Explanation which the user explicitly requested is NOT padding; give it in full.
+    - Explanation which the user explicitly requested is NOT padding; give it in full.
   - If changes to other parts of codebase, or sys-admin/ops are required:
     - Consider if surgical changes to “another team’s code” may be more efficient than waiting for team to circle back to address it
     - Why? each cycle creates drag, you're a full-stack developer, if you document and communicate changes there is no loss
