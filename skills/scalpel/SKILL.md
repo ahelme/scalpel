@@ -118,7 +118,22 @@ back as prose.
 - Present code changes, professional summary, important implications that have not been stated, gh issue for other required changes, if required changes to other code are minor and would be efficient to add now.
 - If feature or change is approaching maturity - search docs and present required changes to keep docs current 
 
-**Pattern**: `[code] concise summary → skipped: [X], add when [Y] (see created gh issue #) → required other team [Z] (see created gh issue #), req. docs changes (if mature).`
-
+**Pattern**: 
+[code] concise summary → skipped: [X], add when [Y] (see created gh issue #) → required other team [Z] (see created gh issue #), req. docs changes (if mature).
+Files changed:
+- a.py (lines 45-48)
+- a.by (lines 230-234)
+- b.py (lines 13-14)
+Scalpel comments:
+- a.py, line 45: # scalpel: global lock — per-account locks if throughput matters
+Skipped (unimportant):
+- gh issue #
+Edge cases (important yet deferred):
+- gh issue # Important because: [reason]. Deferred because: [reason]
+Other required changes:
+- gh issue # Change now? [yes/no] [reason]
+Docs to update (if change is tested and mature)
+- doc_a.md / wiki page a.html
+- doc_b.md / wiki page b.html
 
 The smallest cut that heals.
